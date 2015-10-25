@@ -25,7 +25,7 @@ int main(int argc, char* argv[])
 	cv::Mat img = cv::imread(argv[1], cv::IMREAD_COLOR), detectedEdges, distance, integral, blurred;
 	float blur_coef = atof(argv[4]);
 
-	if (canny_low_treshold == 0.0f || canny_high_treshold == 0.0f || !img.data || blur_coef == 0.0f)
+	if (canny_low_treshold <= 0.0f || canny_high_treshold <= 0.0f || !img.data || blur_coef <= 0.0f || canny_high_treshold < canny_low_treshold)
 		return error(argv[0]);
 
 	
@@ -81,6 +81,7 @@ int main(int argc, char* argv[])
 	cv::imshow("edges", detectedEdges);
 	//cv::imshow("dist", t);
 	cv::imshow("blurred", blurred);
+	cv::waitKey(0);
 
 	cv::imwrite("out.bmp", blurred);
 
