@@ -5,3 +5,4 @@ find_package( OpenCV REQUIRED )
 
 add_subdirectory(lab0)
 add_subdirectory(lab1)
+add_subdirectory(lab2)
